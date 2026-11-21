@@ -1,0 +1,32 @@
+[versions]
+kotlin = "2.4.20"
+kotlinx-serialization = "1.9.0"
+compose = "1.12.2"
+material3 = "1.9.0"
+ksp = "2.3.14"
+koin = "4.2.2"
+jimmer = "0.12.5"
+jackson-annotations = "2.20"
+jackson-kotlin = "2.20.1"
+hikari = "7.1.0"
+sqlite = "3.54.1.0"
+liquibase = "5.0.4"
+
+[libraries]
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "material3" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+jimmer-sql-kotlin = { module = "org.babyfish.jimmer:jimmer-sql-kotlin", version.ref = "jimmer" }
+jimmer-ksp = { module = "org.babyfish.jimmer:jimmer-ksp", version.ref = "jimmer" }
+jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson-annotations" }
+jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson-kotlin" }
+hikari = { module = "com.zaxxer:HikariCP", version.ref = "hikari" }
+sqlite-jdbc = { module = "org.xerial:sqlite-jdbc", version.ref = "sqlite" }
+liquibase-core = { module = "org.liquibase:liquibase-core", version.ref = "liquibase" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+compose = { id = "org.jetbrains.compose", version.ref = "compose" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

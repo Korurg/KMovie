@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/test-changelog.xml
+  - changeSet:
+      id: test-movie
+      author: kmovie
+      changes:
+        - createTable:
+            tableName: test_movie
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: text
+                  constraints:
+                    nullable: false
