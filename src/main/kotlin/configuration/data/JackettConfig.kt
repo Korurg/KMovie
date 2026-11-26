@@ -4,7 +4,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class JackettConfig(
-    val remoteJackettInstances: List<RemoteJackettInstance> = ArrayList()
+    val remoteJackettInstances: List<RemoteJackettInstance> = ArrayList(),
+    val remoteJackettInstance: RemoteJackettInstance? = null
 )
 
 @Serializable
