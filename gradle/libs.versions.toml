@@ -3,6 +3,7 @@ kotlin = "2.4.20"
 kotlinx-serialization = "1.9.0"
 compose = "1.12.2"
 material3 = "1.9.0"
+material-icons = "1.7.3"
 ksp = "2.3.14"
 koin = "4.2.2"
 jimmer = "0.12.5"
@@ -11,11 +12,17 @@ jackson-kotlin = "2.20.1"
 hikari = "7.1.0"
 sqlite = "3.54.1.0"
 liquibase = "5.0.4"
+slf4j = "2.0.17"
+logback = "1.5.18"
+kotlin-logging = "7.0.7"
 
 [libraries]
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "material3" }
+compose-material-icons-extended = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "material-icons" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
+koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin" }
 jimmer-sql-kotlin = { module = "org.babyfish.jimmer:jimmer-sql-kotlin", version.ref = "jimmer" }
 jimmer-ksp = { module = "org.babyfish.jimmer:jimmer-ksp", version.ref = "jimmer" }
 jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson-annotations" }
@@ -23,6 +30,9 @@ jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-
 hikari = { module = "com.zaxxer:HikariCP", version.ref = "hikari" }
 sqlite-jdbc = { module = "org.xerial:sqlite-jdbc", version.ref = "sqlite" }
 liquibase-core = { module = "org.liquibase:liquibase-core", version.ref = "liquibase" }
+slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
