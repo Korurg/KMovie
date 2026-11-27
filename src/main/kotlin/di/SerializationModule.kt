@@ -11,6 +11,7 @@ fun serializationModule() = module {
             prettyPrint = true
             encodeDefaults = true
             ignoreUnknownKeys = true
+            coerceInputValues = true
         }
     }
     single(createdAtStart = true) {

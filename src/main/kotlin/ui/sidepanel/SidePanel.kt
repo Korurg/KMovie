@@ -7,6 +7,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -26,7 +27,8 @@ import com.github.korurg.ui.localizedText
 @Composable
 fun SidePanel(
     onSettingsClick: () -> Unit,
-    onHomeClick: () -> Unit
+    onHomeClick: () -> Unit,
+    onSearchClick: () -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
     var selectedButton by remember { mutableStateOf("home") }
@@ -62,6 +64,17 @@ fun SidePanel(
             onClick = {
                 selectedButton = "home"
                 onHomeClick.invoke()
+            }
+        )
+
+        SidePanelButton(
+            Icons.Default.Search,
+            localizedText("search"),
+            expanded,
+            selected = selectedButton == "search",
+            onClick = {
+                selectedButton = "search"
+                onSearchClick()
             }
         )
 

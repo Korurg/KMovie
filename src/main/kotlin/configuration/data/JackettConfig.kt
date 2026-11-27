@@ -10,5 +10,6 @@ data class JackettConfig(
 
 @Serializable
 data class RemoteJackettInstance(
-    val url: String
+    val url: String,
+    val apiKey: String = ""
 )

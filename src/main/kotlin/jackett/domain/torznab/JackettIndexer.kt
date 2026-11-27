@@ -1,4 +1,4 @@
-package com.github.korurg.jackett.domain
+package com.github.korurg.jackett.domain.torznab
 
 import kotlinx.serialization.Serializable
 import nl.adaptivity.xmlutil.serialization.XmlElement
