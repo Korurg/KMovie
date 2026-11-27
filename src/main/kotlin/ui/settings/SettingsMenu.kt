@@ -4,15 +4,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import com.github.korurg.configuration.ConfigurationService
-import org.koin.compose.koinInject
 
 private enum class ActiveSettingsMenu {
     GENERAL,
@@ -24,7 +17,8 @@ private enum class ActiveSettingsMenu {
 
 @Composable
 fun SettingsMenu(
-
+    language: String,
+    onLanguageChange: (String) -> Unit
 ) {
     var activeSettingsMenu by remember { mutableStateOf(ActiveSettingsMenu.GENERAL) }
 
@@ -43,13 +37,13 @@ fun SettingsMenu(
                 .fillMaxHeight()
                 .fillMaxWidth()
         ) {
-           when(activeSettingsMenu){
-               ActiveSettingsMenu.GENERAL -> GeneralSettingsMenu()
-               ActiveSettingsMenu.AI -> TODO()
-               ActiveSettingsMenu.JACKET -> JacketSettingsMenu()
-               ActiveSettingsMenu.TORSERVE -> TODO()
-               ActiveSettingsMenu.PROXY -> TODO()
-           }
+            when (activeSettingsMenu) {
+                ActiveSettingsMenu.GENERAL -> GeneralSettingsMenu(language, onLanguageChange)
+                ActiveSettingsMenu.AI -> TODO()
+                ActiveSettingsMenu.JACKET -> JacketSettingsMenu()
+                ActiveSettingsMenu.TORSERVE -> TODO()
+                ActiveSettingsMenu.PROXY -> TODO()
+            }
         }
     }
 

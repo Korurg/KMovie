@@ -1,4 +1,4 @@
-package com.github.korurg.jackett.domain
+package com.github.korurg.jackett.domain.torznab
 
 import kotlinx.serialization.Serializable
 import nl.adaptivity.xmlutil.serialization.XmlElement
@@ -7,12 +7,12 @@ import nl.adaptivity.xmlutil.serialization.XmlSerialName
 @Serializable
 data class TorrentItem(
     @XmlElement(true)
-    val title:String = "",
+    val title: String = "",
     @XmlElement(true)
     @XmlSerialName("jackettindexer", "", "")
-    val jackettIndexer:JackettIndexer,
+    val jackettIndexer: JackettIndexer,
     @XmlElement(true)
-    val link:String,
+    val link: String,
     @XmlElement(true)
     val size: Long,
 )

@@ -1,34 +1,41 @@
 package com.github.korurg.ui.settings
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.dp
-import com.github.korurg.configuration.ConfigurationService
+import androidx.compose.runtime.*
 import com.github.korurg.ui.localizedText
-import org.koin.compose.koinInject
 
 @Composable
 fun GeneralSettingsMenu(
-
+    language: String,
+    onLanguageChange: (String) -> Unit
 ) {
-    Column {
-        Text(
-            style = MaterialTheme.typography.headlineLarge,
-            text = localizedText("generalSettings"),
-            modifier = Modifier
-                .padding(16.dp, 16.dp, 16.dp, 16.dp)
-        )
-        Text(
-            text = localizedText("generalSettingsDescription"),
-            modifier = Modifier
-                .padding(start = 16.dp, end = 16.dp)
-        )
-
-        //TODO: language
+    var expanded by remember { mutableStateOf(false) }
+    SettingsPage(
+        title = localizedText("generalSettings"),
+        description = localizedText("generalSettingsDescription")
+    ) {
+        SettingsSection(title = localizedText("language")) {
+            SettingsItem(
+                title = localizedText("language"),
+                description = localizedText("languageDescription")
+            ) {
+                OutlinedButton(onClick = { expanded = true }) {
+                    Text(localizedText(if (language == "ru") "languageRussian" else "languageEnglish"))
+                }
+                DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                    DropdownMenuItem(text = { Text(localizedText("languageEnglish")) }, onClick = {
+                        expanded = false
+                        onLanguageChange("en")
+                    })
+                    DropdownMenuItem(text = { Text(localizedText("languageRussian")) }, onClick = {
+                        expanded = false
+                        onLanguageChange("ru")
+                    })
+                }
+            }
+        }
     }
 }

@@ -1,11 +1,19 @@
 package com.github.korurg.ui
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowPlacement
+import androidx.compose.ui.window.rememberWindowState
+import com.github.korurg.ui.search.SearchPage
 import com.github.korurg.ui.settings.SettingsMenu
 import com.github.korurg.ui.sidepanel.SidePanel
 
@@ -34,6 +42,7 @@ val AppColorScheme = darkColorScheme(
 
 private enum class Screen {
     HOME,
+    SEARCH,
     SETTINGS
 }
 
@@ -43,7 +52,11 @@ fun MainWindow(onCloseRequest: () -> Unit) {
     var currentScreen by remember { mutableStateOf(Screen.HOME) }
 
     CompositionLocalProvider(LocalLanguage provides language) {
-        Window(onCloseRequest = onCloseRequest, title = "KMovie") {
+        Window(
+            onCloseRequest = onCloseRequest,
+            title = "KMovie",
+            state = rememberWindowState(placement = WindowPlacement.Maximized)
+        ) {
             MaterialTheme(colorScheme = AppColorScheme) {
                 Surface {
                     Row(
@@ -52,11 +65,15 @@ fun MainWindow(onCloseRequest: () -> Unit) {
                         SidePanel(
                             onSettingsClick = { currentScreen = Screen.SETTINGS },
                             onHomeClick = { currentScreen = Screen.HOME },
+                            onSearchClick = { currentScreen = Screen.SEARCH },
                         )
                         Column {
                             when (currentScreen) {
-                                Screen.HOME -> Text("Привет, Compose!")
-                                Screen.SETTINGS -> SettingsMenu()
+                                Screen.HOME -> Text(localizedText("homeGreeting"))
+                                Screen.SEARCH -> SearchPage()
+                                Screen.SETTINGS -> SettingsMenu(
+                                    language = language,
+                                    onLanguageChange = { language = it })
                             }
                         }
                     }
